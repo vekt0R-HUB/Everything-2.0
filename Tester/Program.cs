@@ -1,2 +1,13 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Everything;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        var x = Searching.Search("MiddleNames");
+        foreach (var item in x)
+        {
+            System.Console.WriteLine(item);
+        }
+    }
+}
