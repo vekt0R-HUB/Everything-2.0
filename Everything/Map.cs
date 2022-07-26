@@ -2,7 +2,7 @@ namespace Everything;
 
 public static class Map
 {
-    static string[] BlackList = { };
+    static string[] BlackList = {  };
 
     public static IEnumerable<string> Mapping(string root)
     {
