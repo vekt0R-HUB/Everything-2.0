@@ -2,25 +2,20 @@ namespace Everything;
 
 public static class Map
 {
-    public static IEnumerable<string> Mapping()
-    {
-        var directory = Directory.GetParent(Directory.GetCurrentDirectory());
-        var content = Path.Combine(directory!.FullName, "Content");
-        return Mapping(content);
-    }
+    static string[] BlackList = { };
 
     public static IEnumerable<string> Mapping(string root)
     {
         yield return root;
 
-        var directories = Directory.EnumerateDirectories(root);
-        var files = Directory.EnumerateFiles(root);
+        var directories = Directory.GetDirectories(root).Where(x => !BlackList.Contains(x));
+        var files = Directory.GetFiles(root);
+
 
         foreach (var item in files)
         {
             yield return item;
         }
-
         foreach (var item in directories)
         {
             foreach (var item2 in Mapping(item))
