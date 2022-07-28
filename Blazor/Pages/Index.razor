@@ -1,0 +1,45 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1 class="futu">Everything 2.0</h1>
+
+<div class="header">
+    
+    <div class="inputBox">
+        <input type="text" required="required" @bind="query">
+        <span>Query</span>
+    </div>
+    
+    <div class="inputBox">
+        <input type="text" required="required" @bind="path">
+        <span>Path</span>
+    </div>
+
+    <button type="default" class="btn-main" @onclick="RunQuery"><span>Search</span><i></i></button>
+</div>
+
+@if (result != null && result.Count() != 0)
+{
+    <ul class="results">
+        @foreach (var item in result)
+        {
+            <li>
+                <div class="item">
+                    <p class="title">@item</p>
+                </div>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    string query = "";
+    string path = "";
+    private IEnumerable<string> result = new string[] { };
+
+    public void RunQuery()
+    {
+        result = Searching.Search(path, query).ToArray();
+    }
+}
