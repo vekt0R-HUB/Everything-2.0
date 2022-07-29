@@ -1,20 +1,40 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Everything 2.0</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1 class="head">Everything 2.0</h1>
 
-<input type="text"><span>Path</span>
-<input type="text"><span>Query</span>
+<div class="header">
+    <div class="inputBox">
+        <input type="text" required="required" @bind="query">
+        <span>Query</span>
+    </div>
+    <button type="default" class="btn-main" @onclick="RunQuery"><span>Search</span><i></i></button>
+</div>
+<div class="inputBox">
+    <input type="text" required="required" @bind="path">
+    <span>Path</span>
+</div>
 
-<button>Search</button>
 
-@code{
-    string path = "";
-    string query ="";
-    string[] result;
-    public void RunQuery(){
-        
-    }
+
+@if (result is not null)
+{
+    <ul class="result">
+        @foreach (var item in result)
+        {
+            <li>@item</li>
+        }
+    </ul>
 }
 
+@code
+{
+    string path = "";
+    string query = "";
+    string[] result;
+    public void RunQuery()
+    {
+        result = Searching.Search(path, query).ToArray();
+    }
+}

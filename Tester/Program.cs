@@ -4,7 +4,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        var x = Searching.Search(@"C:\Users\vekt0R\Documents\Personal chest", "barbaren");
+        var x = Searching.Search(@"C:\Users\vekt0R\Documents\Main\Series y peliculas", "see");
         x.ForAll(System.Console.WriteLine);
     }
 }
