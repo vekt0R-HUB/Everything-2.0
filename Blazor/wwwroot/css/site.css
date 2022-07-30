@@ -108,9 +108,11 @@ a, .btn-link {
 .inputBox input:focus {
     border: 1px solid var(--clr);
 }
-.btn-main{
-    top: 3em;
-    height: 3em;
+.btn-main
+{
+    height: fit-content;
+    padding: 0.7em;
+    top: 1em;
     position: relative;
     background: var(--sec);
     color: var(--sec);
@@ -173,4 +175,18 @@ a, .btn-link {
 .btn-main:hover i::after{
     width: 20px;
     left: 80%;
+}
+.result{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 5px;
+}
+.result li{
+    transition: 0.2s;
+    box-shadow: 0 0 4px var(--sec);
+}
+.result li:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 0 4px var(--clr);
 }
