@@ -6,14 +6,12 @@
 
 <div class="header">
     <div class="inputBox">
-        <input type="text" required="required" @bind="query">
-        <span>Query</span>
+        <input type="text" required="required" @bind="query"><span>Query</span>
     </div>
     <button type="default" class="btn-main" @onclick="RunQuery"><span>Search</span><i></i></button>
-<div class="inputBox">
-    <input type="text" required="required" @bind="path">
-    <span>Path</span>
-</div>
+    <div class="inputBox">
+        <input type="text" required="required" @bind="path"><span>Path</span>
+    </div>
 </div>
 
 
@@ -32,9 +30,9 @@
 {
     string path = "";
     string query = "";
-    string[] result;
+    IEnumerable<string> result;
     public void RunQuery()
     {
-        result = Searching.Search(path, query).ToArray();
+        result = Searching.Search(path, query);
     }
 }
